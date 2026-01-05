@@ -33,7 +33,6 @@ function App() {
             🚀 ZapFlow
           </h1>
         </div>
-
         <nav className="p-4 space-y-2">
           <button
             onClick={() => setCurrentPage('dashboard')}
@@ -45,7 +44,6 @@ function App() {
           >
             📊 Dashboard
           </button>
-
           <button
             onClick={() => setCurrentPage('leads')}
             className={`w-full text-left px-4 py-2 rounded-lg transition ${
@@ -56,7 +54,6 @@ function App() {
           >
             👥 Leads
           </button>
-
           <button
             onClick={() => setCurrentPage('inbox')}
             className={`w-full text-left px-4 py-2 rounded-lg transition ${
@@ -67,7 +64,6 @@ function App() {
           >
             💬 Inbox
           </button>
-
           <button
             onClick={() => setCurrentPage('settings')}
             className={`w-full text-left px-4 py-2 rounded-lg transition ${
@@ -123,13 +119,79 @@ function App() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
               ⚙️ Configurações
             </h1>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Perfil
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Bem-vindo, {user?.name}!
-              </p>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Nome
+                  </label>
+                  <input
+                    type="text"
+                    value={user?.name || ''}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={user?.email || ''}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                🔗 Integrações
+              </h3>
+              <div className="space-y-4">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white">
+                        Meta (Facebook Ads + WhatsApp)
+                      </h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Conecte sua conta Meta para sincronizar leads
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        window.location.href = "https://www.facebook.com/v18.0/dialog/oauth?client_id=1389776572875133&redirect_uri=https://nex-crm-theta.vercel.app/auth/meta/callback&scope=leads_retrieval,whatsapp_business_messaging,business_management,ads_management&response_type=code&state=random_state_string";
+                      }}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
+                    >
+                      Conectar Meta
+                    </button>
+                  </div>
+                </div>
+
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white">
+                        Evolution API
+                      </h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Em breve
+                      </p>
+                    </div>
+                    <button className="bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg cursor-not-allowed">
+                      Em breve
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
